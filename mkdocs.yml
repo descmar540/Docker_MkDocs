@@ -4,8 +4,11 @@ nav:
     - Principal: index.md
     - Acerca de: about.md
 
-theme: material
-language: es
+theme: 
+  name: material
+  language: es
+  palete:
+    primary: purple
 
 
 
