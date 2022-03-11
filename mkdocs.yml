@@ -1,0 +1,12 @@
+site_name: IAW - David Escoriza Martínez
+
+nav:
+    - Principal: index.md
+    - Acerca de: about.md
+
+theme: material
+language: es
+
+
+
+
