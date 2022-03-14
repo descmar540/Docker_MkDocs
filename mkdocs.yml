@@ -3,12 +3,19 @@ site_name: IAW - David Escoriza Martínez
 nav:
     - Principal: index.md
     - Acerca de: about.md
+    - Prácticas: 
 
 theme: 
   name: material
   language: es
-  palete:
+  palette:
     primary: purple
+    accent: lime
+  font:
+    text: Roboto
+  features:
+    - navigation.tabs
+  
 
 
 
