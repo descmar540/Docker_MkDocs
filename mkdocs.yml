@@ -15,6 +15,7 @@ theme:
     text: Roboto
   features:
     - navigation.tabs
+  logo: images/Lorem.png
   
 
 
