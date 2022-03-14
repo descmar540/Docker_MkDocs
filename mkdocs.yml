@@ -3,7 +3,7 @@ site_name: IAW - David Escoriza Martínez
 nav:
     - Principal: index.md
     - Acerca de: about.md
-    - Prácticas: 
+    - Prácticas: practicas.md
 
 theme: 
   name: material
