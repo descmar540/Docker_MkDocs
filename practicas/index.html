@@ -13,7 +13,7 @@
     
     
       
-        <title>Acerca de - IAW - David Escoriza Martínez</title>
+        <title>Prácticas - IAW - David Escoriza Martínez</title>
       
     
     
@@ -62,6 +62,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#instalacion-de-wordpress-usando-contenedores-docker-y-docker-compose" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -90,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Acerca de
+              Prácticas
             
           </span>
         </div>
@@ -162,12 +167,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../about/" class="md-tabs__link">
       Acerca de
     </a>
   </li>
@@ -176,10 +179,12 @@
         
   
   
+    
+  
 
 
   <li class="md-tabs__item">
-    <a href="../practicas/" class="md-tabs__link">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
       Prácticas
     </a>
   </li>
@@ -237,19 +242,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
         Acerca de
       </a>
-      
     </li>
   
 
@@ -260,11 +257,59 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../practicas/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Prácticas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Prácticas
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#script-de-instalacion-de-docker" class="md-nav__link">
+    Script de instalación de Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivo-docker-composeyml" class="md-nav__link">
+    Archivo docker-compose.yml
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -276,6 +321,46 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#script-de-instalacion-de-docker" class="md-nav__link">
+    Script de instalación de Docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archivo-docker-composeyml" class="md-nav__link">
+    Archivo docker-compose.yml
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -283,9 +368,144 @@
                 
 
 
-  <h1>Acerca de</h1>
+<h1 id="instalacion-de-wordpress-usando-contenedores-docker-y-docker-compose">Instalación de WordPress usando contenedores Docker y Docker Compose</h1>
+<p>Para realizar esta práctica hay 3 archivos fundamentales. Por un lado, <strong>el script para instalar docker y docker-compose</strong>. Y por otro lado, el archivo <strong>docker-compose.yml</strong> y el archivo <strong>.env</strong> con las variables comunes.</p>
+<h2 id="script-de-instalacion-de-docker">Script de instalación de Docker</h2>
+<ul>
+<li>Lo primero que hay que hacer es definir una variable del nombre de usuario para llamarlo ubuntu:</li>
+</ul>
+<pre><code>USERNAME=ubuntu
+</code></pre>
+<ul>
+<li>El siguiente paso, como siempre, es actualizar la lista de paquetes del repositorio:</li>
+</ul>
+<pre><code>apt update
+</code></pre>
+<ul>
+<li>Se descarga el script de instalación de docker:</li>
+</ul>
+<pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
+</code></pre>
+<ul>
+<li>Tras ello, se ejecuta dicho script:</li>
+</ul>
+<pre><code>sh ./get-docker.sh
+</code></pre>
+<ul>
+<li>Ahora es el turno de añadir el usuario de la máquina virtual de Amazon al grupo docker:</li>
+</ul>
+<pre><code>usermod -aG docker $USERNAME
+</code></pre>
+<ul>
+<li>Lo siguiente es iniciar el servicio de Docker:</li>
+</ul>
+<pre><code>systemctl start docker
+</code></pre>
+<ul>
+<li>El penúltimo paso es instalar el paquete de <strong>docker-compose</strong>:</li>
+</ul>
+<pre><code>apt install docker-compose -y
+</code></pre>
+<ul>
+<li>Para finalizar esta primera parte, y ya fuera del script de instalación, hay que ejecutar el comando <strong>newgrp docker</strong> para no tener que reiniciar la máquina y que los cambios se efectúen. Pero es importantísimo hacerlo fuera del script.</li>
+</ul>
+<hr />
+<h2 id="archivo-docker-composeyml">Archivo docker-compose.yml</h2>
+<p>En este archivo es donde se configuran todos los servicios para levantar la aplicación de WordPress, que se componen de distintas imágenes:</p>
+<ul>
+<li><strong>WordPress</strong>:</li>
+</ul>
+<p>Voy a poner un copy-paste y se van explicando todos los apartados de este primer servicio, y luego el resto ya las cosas que le falten a este primero:</p>
+<pre><code>version: '3.3'
 
+services:
+  wordpress:
+    image: wordpress:php8.0
+    environment:
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
+      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
+    restart: always
+    volumes:
+      - wordpress_data:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - frontend_network
+      - backend_network
+</code></pre>
+<p>La <strong>version</strong> '3.3' es la versión del archivo .yml del Docker-compose. El apartado <strong>services</strong> es donde se engloban todas las instancias (wordpress, mysql, phpmyadmin, etc). <strong>image</strong> es la imagen de docker-hub que se escoge para la instalación. <strong>environment</strong> son las variables de configuración de la imagen necesarias para que arranque. Si atendemos al valor de dichas variables, vemos que no hay un valor, sino una referencia a otra variable (<em>${WORDPRESS_DB_HOST}</em>). Esto se configura en un archivo <strong>.env</strong>, que en esta práctica es el siguiente:</p>
+<pre><code>WORDPRESS_DB_HOST=mysql
+WORDPRESS_DB_USER=wordpress_user
+WORDPRESS_DB_PASSWORD=wordpress_password
+WORDPRESS_DB_NAME=wordpress_db
+MYSQL_ROOT_PASSWORD=password
+</code></pre>
+<p>Por lo tanto, desde las variables del archivo .yml se llama a las variables del .env.
+<strong>restart</strong> es para que si la imagen se cae, se levante sola y no se pierdan los datos. <strong>depends-on</strong> se utiliza para que esa imagen no se arranque si no se arranca otra del docker-compose.yml. Finalmente, <strong>networks</strong> sirve para identificar a que niveles quieres que perteneza la imagen en sí.</p>
+<ul>
+<li><strong>mysql</strong>:</li>
+</ul>
+<pre><code>  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
+      - MYSQL_USER=${WORDPRESS_DB_USER}
+      - MYSQL_PASSWORD=${WORDPRESS_DB_PASSWORD}
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - backend_network
+</code></pre>
+<ul>
+<li><strong>phpmyadmin</strong>:</li>
+</ul>
+<pre><code>  phpmyadmin:
+    image: phpmyadmin:5
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mysql
+    depends_on:
+      - mysql
+    networks:
+      - frontend_network
+      - backend_network
+</code></pre>
+<p>En este caso se ve el apartado <strong>ports</strong>. Es para que las peticiones del puerto 80 de la máquina se pase al 8080 del phpmyadmin.</p>
+<ul>
+<li><strong>https-portal</strong>:</li>
+</ul>
+<pre><code>  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      #DOMAINS: 'localhost -&gt; http://wordpress:80 #local'
+      DOMAINS: 'dem-dockerwp.ddns.net -&gt; http://wordpress:80 #production'
+    volumes:
+      - ssl_certs_data:/var/lib/https-portal
+    depends_on:
+      - wordpress
+    restart: always
+    networks:
+      - frontend_network
 
+volumes:
+  wordpress_data:
+  mysql_data:
+  ssl_certs_data:
+
+networks:
+  frontend_network:
+  backend_network:
+</code></pre>
+<p>Esta imagen sirve para habilitar un certificado HTTPS en el dominio seleccionado.</p>
 
               
             </article>
@@ -299,7 +519,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Pie">
       
         
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Anterior: Principal" rel="prev">
+        <a href="../about/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Acerca de" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -308,26 +528,11 @@
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Principal
+              Acerca de
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../practicas/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Prácticas" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              Prácticas
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
